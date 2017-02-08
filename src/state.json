@@ -1,0 +1,51 @@
+{
+  "weeks": [
+      {
+        "subject": "Functional Programming Basics",
+        "resources": [
+          {
+            "title": "Thinking in React",
+            "url": "https://facebook.github.io/react/docs/thinking-in-react.html"
+          }
+        ]
+      },
+
+      {
+        "subject": "ES6",
+        "resources": [
+          {
+            "title": "var, let and const",
+            "url": "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84"
+          },
+          {
+            "title": "arrow functions",
+            "url":"https://www.youtube.com/watch?v=6sQDTgOqh-I"
+          },
+          {
+            "title": "Interactive ES5 to ES6 conversion guide",
+            "url": "http://stack.formidable.com/es6-interactive-guide/#/"
+          }
+        ]
+      },
+
+      {
+        "subject": "Intro to React",
+        "resources": [
+        {
+          "title": "thinking in react",
+          "url": "https://facebook.github.io/react/docs/thinking-in-react.html"
+        },
+
+        {
+          "title": "what is react?",
+          "url":"https://www.youtube.com/watch?v=JPT3bFIwJYA"
+        },
+
+        {
+          "title": "React.js Components and Rendering",
+          "url":"https://youtu.be/fd2Cayhez58"
+        }
+      ]
+    }
+  ]
+}
