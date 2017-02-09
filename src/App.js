@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Subject from './Subject';
-import theState from './state.json';
 import { Panel, Grid } from 'react-bootstrap';
+import Subject from './Subject';
+import AddResource from './AddResource';
 import './App.css';
+import theState from './state.json';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = theState;
-    // "weeks": [
+    // "subjects": [
     //     {
     //       "subject": "Functional Programming Basics",
     //       "resources": [
@@ -22,14 +23,15 @@ class App extends Component {
     // }
   }
   render() {
-  const list = this.state.weeks.map((item, key) => {
-    return (
-      <Panel collapsible defaultExpanded header={item.subject} key={key+item.subject}>
-      Basic description here.
-        <Subject resources={item.resources} />
-      </Panel>
-    )
-  })
+    const list = this.state.subjects.map((item, key) => {
+      return (
+        <Panel collapsible defaultExpanded header={item.subject} key={key + item.subject}>
+          <p>Basic description here.</p>
+          <Subject resources={item.resources} />
+          <AddResource />
+        </Panel>
+      );
+    });
     return (
       <div className="App">
         <Grid>
