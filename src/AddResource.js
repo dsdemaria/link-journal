@@ -1,40 +1,53 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 export default class AddResource extends Component {
   constructor() {
     super();
     this.state = {
-      inputValue: '',
+      titleValue: '',
+      urlValue: '',
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  validateInput() {
-    const length = this.state.inputValue.length;
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  _validateInput() {
+    const length = this.state.titleValue.length;
     if (length > 10) return 'success';
     else if (length > 5) return 'warning';
     else if (length > 0) return 'error';
   }
-  handleSubmit(e) {
-    e.preventDefault();
-    // add new resource to state
-  }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={e => {
+          e.preventDefault()
+          this.props.onSubmit(this.state.title, this.state.url)
+          this.setState({ titleValue: '', urlValue: '' });
+        }}>
         <FormGroup
           controlId="formBasicText"
-          validationState={this.validateInput()}
+          validationState={this._validateInput()}
         >
           <ControlLabel>Add Resource</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.value}
-            placeholder="Enter text"
+            name="title"
+            value={this.state.inputValue}
+            placeholder="Enter title"
             onChange={this.handleChange}
           />
-          <FormControl.Feedback />
+          <FormControl
+            type="text"
+            name="url"
+            value={this.state.inputValue}
+            placeholder="Enter url"
+            onChange={this.handleChange}
+          />
         </FormGroup>
       </form>
     );

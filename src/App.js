@@ -1,42 +1,23 @@
 import React, { Component } from 'react';
-import { Panel, Grid } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 import Subject from './Subject';
 import AddResource from './AddResource';
 import './App.css';
-import theState from './state.json';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = theState;
-    // "subjects": [
-    //     {
-    //       "subject": "Functional Programming Basics",
-    //       "resources": [
-    //         {
-    //           "title": "Thinking in React",
-    //           "url": "https://facebook.github.io/react/docs/thinking-in-react.html"
-    //         }
-    //       ]
-    //     },
-    //   ]
-    // }
-  }
   render() {
-    const list = this.state.subjects.map((item, key) => {
+    const list = this.props.subjects.map((item) => {
       return (
-        <Panel collapsible defaultExpanded header={item.subject} key={key + item.subject}>
+        <Panel collapsible defaultExpanded header={item.subject} key={item.id}>
           <p>Basic description here.</p>
           <Subject resources={item.resources} />
-          <AddResource />
+          <AddResource onSubmit={this.props.onSubmit} />
         </Panel>
       );
     });
     return (
       <div className="App">
-        <Grid>
-          {list}
-        </Grid>
+        {list}
       </div>
     );
   }
