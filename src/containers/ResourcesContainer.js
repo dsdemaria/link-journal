@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-// look at addResource paramater for values that are needed, i think these are correct
+// look at addResource parameter for values that are needed, i think these are correct
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: (title, url) => {

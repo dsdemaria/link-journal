@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 export default class AddResource extends Component {
   constructor() {
@@ -25,9 +25,9 @@ export default class AddResource extends Component {
   render() {
     return (
       <form onSubmit={e => {
-          e.preventDefault()
-          this.props.onSubmit(this.state.title, this.state.url)
+          this.props.onSubmit(this.state.titleValue, this.state.urlValue)
           this.setState({ titleValue: '', urlValue: '' });
+          e.preventDefault()
         }}>
         <FormGroup
           controlId="formBasicText"
@@ -36,18 +36,21 @@ export default class AddResource extends Component {
           <ControlLabel>Add Resource</ControlLabel>
           <FormControl
             type="text"
-            name="title"
-            value={this.state.inputValue}
+            name="titleValue"
+            value={this.state.titleValue}
             placeholder="Enter title"
             onChange={this.handleChange}
           />
           <FormControl
             type="text"
-            name="url"
-            value={this.state.inputValue}
+            name="urlValue"
+            value={this.state.urlValue}
             placeholder="Enter url"
             onChange={this.handleChange}
           />
+          <Button type="submit">
+            Add Resource
+          </Button>
         </FormGroup>
       </form>
     );
