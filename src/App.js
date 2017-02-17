@@ -6,18 +6,17 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const list = this.props.subjects.map((item) => {
-      return (
-        <Panel collapsible defaultExpanded header={item.subject} key={item.id}>
-          <p>Basic description here.</p>
-          <Subject resources={item.resources} />
-          <AddResource onSubmit={this.props.onSubmit} />
-        </Panel>
-      );
-    });
+    // const list = this.props.subjects.map((item) => {
+    //   return (
+    //     <Panel collapsible defaultExpanded header={item.subject} key={item.id}>
+    //       <p>Basic description here.</p>
+    //       <Subject resources={item.resources} />
+    //       <AddResource onSubmit={this.props.onSubmit} />
+    //     </Panel>
+    //   );
+    // });
     return (
       <div className="App">
-        {list}
       </div>
     );
   }

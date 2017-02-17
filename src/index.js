@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router'
+import thunk from 'redux-thunk';
+import { Router, Route, browserHistory } from 'react-router';
 // import App from './App';
 import ResourcesContainer from './containers/ResourcesContainer';
-import rootReducer from './reducers'
+import rootReducer from './reducers';
+import { getAllSubjects } from './actions/index';
 import './index.css';
 
-const store = createStore(rootReducer);
-// temporarily changed the parent component to ResourcesContainer from App
+const middleware = [thunk];
+const store = createStore(
+  rootReducer,
+  applyMiddleware(middleware)
+);
+
+store.dispatch(getAllSubjects())
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>

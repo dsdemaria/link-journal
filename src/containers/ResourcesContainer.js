@@ -2,21 +2,21 @@ import { connect } from 'react-redux';
 import { addNewResource } from '../actions'
 import App from '../App';
 
-const mapStateToProps = (state) => {
-  return {
-    subjects: state.subjects,
-  }
-}
+const mapStateToProps = (state) => ({
+  subjects: state,
+})
 
-// look at addResource parameter for values that are needed, i think these are correct
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSubmit: (title, url) => {
-      dispatch(addNewResource(title, url));
-    }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onSubmit(title, url) {
+//       dispatch(addNewResource(title, url));
+//     }
+//   }
+// }
 
-const ResourcesContainer = connect(mapStateToProps, mapDispatchToProps)(App)
+const ResourcesContainer = connect(
+  mapStateToProps,
+  { onSubmit: addNewResource }
+)(App)
 
 export default ResourcesContainer
