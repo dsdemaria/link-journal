@@ -16,17 +16,17 @@
     "id": 22,
     "resources": [
       {
-        "id": 1,
+        "id": 2,
         "title": "var, let and const",
         "url": "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84"
       },
       {
-        "id": 2,
+        "id": 3,
         "title": "arrow functions",
         "url":"https://www.youtube.com/watch?v=6sQDTgOqh-I"
       },
       {
-        "id": 3,
+        "id": 4,
         "title": "Interactive ES5 to ES6 conversion guide",
         "url": "http://stack.formidable.com/es6-interactive-guide/#/"
       }
@@ -44,13 +44,13 @@
       },
 
       {
-        "id": 2,
+        "id": 5,
         "title": "what is react?",
         "url":"https://www.youtube.com/watch?v=JPT3bFIwJYA"
       },
 
       {
-        "id": 3,
+        "id": 6,
         "title": "React.js Components and Rendering",
         "url":"https://youtu.be/fd2Cayhez58"
       }

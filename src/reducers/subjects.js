@@ -1,62 +1,45 @@
-import { combineReducers } from 'redux';
 
-const resource = (state = {}, action) => {
+// action.subjects = all of subjects.json
+export const subjectsById = (state = {}, action) => {
   switch(action.type) {
-    case 'ADD_NEW_RESOURCE':
-      return {
-        title: action.title,
-        url: action.url,
-      }
-    default:
-      return state
-  }
-}
-
-const resourceById = (state = {}, action) => {
-  switch(action.type) {
-    case 'ADD_NEW_RESOURCE':
+    case 'RECEIVE_SUBJECTS':
       return {
         ...state,
-        [action.id]: resource(state[action.id], action),
+        ...action.subjects.reduce((obj, subject) => {
+          obj[subject.id] = {
+            subject: subject.subject,
+            resources: subject.resources.reduce((arr, resource) => {
+              return [...arr, resource.id]
+            }, [])
+          }
+          return obj
+        }, {})
       }
+    default: return state
   }
 }
 
-const allResources = (state = [], action) => {
+export const resourcesById = (state = {}, action) => {
   switch(action.type) {
-    case 'ADD_NEW_RESOURCE':
-      return [...state, action.id];
-    default:
-      return state;
+    case 'RECEIVE_SUBJECTS':
+      return {
+        ...state,
+        ...action.subjects.reduce((parent, subject) => {
+            return subject.resources.reduce((obj, resource) => {
+              parent[resource.id] = {
+                title: resource.title,
+                url: resource.url
+              }
+              return parent
+            }, {})
+        }, {})
+      }
+    default: return state
   }
 }
-const subjects = combineReducers({
-  resourceById,
-  allResources,
-})
 
-// const subject = (state = {}, action) => {
-//   switch(action.type) {
-//     case 'ADD_NEW_RESOURCE':
-//       return {
-//           ...state,
-//           resource(state[action.id], action)
-//         }
-//     default:
-//       return state
-//   }
-// }
-// // not quite...
-// const subjects = (state = initialState.subjects, action) => {
-//   switch(action.type) {
-//     case 'ADD_NEW_RESOURCE':
-//       return {
-//         ...state,
-//         [action.id]: subject(state[action.id], action)
-//       }
-//     default:
-//       return state
-//   }
-// }
+const getResource = (state, id) =>
+  state.resourcesById[id]
 
-export default subjects
+export const getResources = (ids) =>
+  ids.map(id => getResource(resourcesById, id))

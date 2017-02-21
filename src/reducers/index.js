@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import subjects from './subjects';
+import { subjectsById, resourcesById} from './subjects';
 
 const rootReducer = combineReducers({
-  subjects,
+  subjectsById,
+  resourcesById
 });
 
 export default rootReducer;

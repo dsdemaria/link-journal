@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import { addNewResource } from '../actions'
+import { addNewResource } from '../actions';
+// import { getSubject } from '../reducers/subjects';
 import App from '../App';
-
-const mapStateToProps = (state) => ({
-  subjects: state,
+// subjects: getSubject(state.subjects)
+const mapStateToProps = state => ({
+  subjects: state // subjects should be an array of subjects
 })
 
 // const mapDispatchToProps = (dispatch) => {

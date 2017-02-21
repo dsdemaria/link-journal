@@ -11,9 +11,9 @@ import { getAllSubjects } from './actions/index';
 import './index.css';
 
 const middleware = [thunk];
-const store = createStore(
+export const store = createStore(
   rootReducer,
-  applyMiddleware(middleware)
+  applyMiddleware(...middleware)
 );
 
 store.dispatch(getAllSubjects())
