@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ResourcesContainer from './containers/ResourcesContainer';
 import './App.css';
 

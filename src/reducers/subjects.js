@@ -6,7 +6,8 @@ export const getResource = (state, id) =>
 export const getSubject = (state, id) => {
   return {
     ...state.subjectsById[id],
-    resources: state.subjectsById[id].resources.map(id => getResource(state, id))
+    resources: state.subjectsById[id].resources.map(id => getResource(state, id)),
+    id
   }
 }
 
