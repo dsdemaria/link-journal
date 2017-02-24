@@ -4,8 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { Router, Route, browserHistory } from 'react-router';
-// import App from './App';
-import ResourcesContainer from './containers/ResourcesContainer';
+import App from './App';
 import rootReducer from './reducers';
 import { getAllSubjects } from './actions/index';
 import './index.css';
@@ -21,7 +20,7 @@ store.dispatch(getAllSubjects())
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ResourcesContainer} />
+      <Route path="/" component={App} />
     </Router>
   </Provider>,
   document.getElementById('root')

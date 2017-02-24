@@ -1,4 +1,23 @@
 
+// Selectors
+export const getResource = (state, id) =>
+  state.resourcesById[id]
+
+export const getSubject = (state, id) => {
+  return {
+    ...state.subjectsById[id],
+    resources: state.subjectsById[id].resources.map(id => getResource(state, id))
+  }
+}
+
+export const getVisibleProducts = state => {
+  return Object.keys(state.subjectsById)
+    .reduce((arr, subject) => {
+      return [...arr, getSubject(state, subject)]
+    }, [])
+}
+
+
 // action.subjects = all of subjects.json
 export const subjectsById = (state = {}, action) => {
   switch(action.type) {
@@ -37,9 +56,3 @@ export const resourcesById = (state = {}, action) => {
     default: return state
   }
 }
-
-const getResource = (state, id) =>
-  state.resourcesById[id]
-
-export const getResources = (ids) =>
-  ids.map(id => getResource(resourcesById, id))

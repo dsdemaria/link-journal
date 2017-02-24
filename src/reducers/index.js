@@ -7,3 +7,9 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export const getSubjectResources = (state) => {
+  Object.keys(state.resourcesById).map(function(id) {
+    return state.resourcesById[id]
+  })
+}
